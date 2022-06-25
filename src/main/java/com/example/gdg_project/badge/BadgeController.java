@@ -20,4 +20,10 @@ public class BadgeController {
         return badgeService.getAllBadgesByUser(id);
     }
 
+    @ApiOperation(value = "배지 최근 조회 API", notes = "최근 배지들 불러오기")
+    @GetMapping("/user/badges/recent/{id}")
+    public List<BadgeDto> getRecentBadgesByUser(@PathVariable Long id) {
+        return badgeService.getRecentBadgesByUser(id);
+    }
+
 }
