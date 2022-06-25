@@ -1,4 +1,4 @@
-package com.example.gdg_project.user;
+package com.example.gdg_project.category;
 
 import lombok.*;
 
@@ -9,13 +9,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="TB_User")
-public class UserEntity {
+@Table(name="TB_Category")
+public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long userId;
+    private Long categoryId;
 
     @Column(name = "name")
-    private String userName;
+    private String categoryName;
 }
