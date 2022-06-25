@@ -22,4 +22,7 @@ public class BadgeEntity extends BaseTimeEntity {
 
     @Column(name = "icon_url")
     private String iconUrl;
+
+    @Column(name = "condition")
+    private String condition;
 }
