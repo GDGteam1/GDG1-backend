@@ -13,9 +13,9 @@ import javax.persistence.*;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long userId;
 
-    @Column(name = "user_social_id")
-    private String socialId;
+    @Column(name = "name")
+    private String userName;
 }

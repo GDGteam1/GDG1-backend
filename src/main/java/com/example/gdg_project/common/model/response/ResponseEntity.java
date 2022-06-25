@@ -21,7 +21,7 @@ public class ResponseEntity<T> {
         this.data = data;
     }
 
-    public static <T> ResponseEntity<T> of(HttpStatus httpStatus, ResponseMessage message){
+    public static <T> ResponseEntity<T> of(HttpStatus httpStatus, ResponseMessage message) {
         int status = Optional.ofNullable(httpStatus)
                 .orElse(HttpStatus.OK)
                 .value();
