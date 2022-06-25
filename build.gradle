@@ -35,6 +35,10 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
     testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.8.2'
+
+    implementation platform('com.google.cloud:libraries-bom:25.4.0')
+
+    implementation 'com.google.cloud:google-cloud-vision'
 }
 
 tasks.named('test') {
