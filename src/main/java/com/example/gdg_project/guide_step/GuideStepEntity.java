@@ -4,14 +4,16 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import com.example.gdg_project.common.BaseTimeEntity;
+
 @Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity 
 @Table(name = "TB_GuideStep")
-public class GuideStepEntity {
+public class GuideStepEntity extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
