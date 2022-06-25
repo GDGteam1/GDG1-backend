@@ -24,7 +24,7 @@ dependencies {
     //google vision
     implementation platform('com.google.cloud:libraries-bom:25.4.0')
     implementation 'com.google.cloud:google-cloud-vision'
-    implementation 'org.springframework.cloud:spring-cloud-gcp-starter-vision'
+//    implementation 'org.springframework.cloud:spring-cloud-gcp-starter-vision'
 //    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation 'io.springfox:springfox-swagger-ui:3.0.0'
