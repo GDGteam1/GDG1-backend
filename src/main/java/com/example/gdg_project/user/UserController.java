@@ -2,6 +2,7 @@ package com.example.gdg_project.user;
 
 import com.example.gdg_project.badge.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserController {
     private final UserRepository userRepo;
-    private final BadgeRepository badgeRepo;
+
+    @Autowired
+    private BadgeService badgeService;
 
     @RequestMapping(value="/user/{id}",  method = RequestMethod.GET)
     public @ResponseBody GetUserOutputDto getUser(@PathVariable("id") Long userId){
@@ -31,17 +34,17 @@ public class UserController {
     private final EntityManager em;
 
 
-    @RequestMapping(value="/user/badges/recent",  method = RequestMethod.GET)
-    public @ResponseBody List<RecentBadgeDto> getRecentBadgesByUser(){
-        // 최신순으로 정렬해서 has_badge 가져오기
-        // 전체 가져와서 위 값에 포함되는 값은 isActive = true 로 변경
-
-//      List<BadgeEntity>  badges =  badgeRepo.findAllRecentBadgesByUser();
-
-        List<RecentBadgeDto> badges = badgeRepo.findAllRecentBadgesByUser();
-        System.out.println(badges);
-        return badges;
-    }
+//    @GetMapping("/user/badges/recent/{id}")
+//    public List<RecentBadgeDto> getRecentBadgesByUser(@PathVariable Long id){
+//        // 최신순으로 정렬해서 has_badge 가져오기
+//        // 전체 가져와서 위 값에 포함되는 값은 isActive = true 로 변경
+//
+////      List<BadgeEntity>  badges =  badgeRepo.findAllRecentBadgesByUser();
+//
+//        List<RecentBadgeDto> badges = badgeService.getRecentBadgesByUser(id);
+//        System.out.println(badges);
+//        return badges;
+//    }
 
 
 
