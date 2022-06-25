@@ -26,19 +26,19 @@ public class VisionController {
             List<String> labels =  di.getLabels(file.getBytes()).stream().map(s->s.toLowerCase(Locale.ROOT)).collect(Collectors.toList());
 
             if ( labels.toString().contains("water") ||  labels.toString().contains("bottle")){
-                return "PET";
+                return "일반페트병";
             }
             if ( labels.toString().contains("can")){
-                return "can";
+                return "캔류";
             }
             if ( labels.toString().contains("cup")){
-                return "paper";
+                return "종이류";
             }
 
             return "재활용이 불가능합니다. 일반쓰레기에 버려주십시오.";
         }
 
-        return "no such file on server";
+        return "파일이 존재하지 않습니다.";
     }
 
 }
