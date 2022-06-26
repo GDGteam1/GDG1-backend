@@ -10,6 +10,8 @@ import com.google.cloud.vision.v1.Image;
 import com.google.cloud.vision.v1.ImageAnnotatorClient;
 import com.google.protobuf.ByteString;
 
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -17,19 +19,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DetectImage {
-    public static void main(String... args) throws Exception {
-        // Initialize client that will be used to send requests. This client only needs to be created
-        // once, and can be reused for multiple requests. After completing all of your requests, call
-        // the "close" method on the client to safely clean up any remaining background resources.
+    public List<String> getLabels(byte[] fileBytes){
         try (ImageAnnotatorClient vision = ImageAnnotatorClient.create()) {
 
             // The path to the image file to annotate
-            String fileName = "C:/Users/shine/Desktop/GDG_project/src/main/resources/images/mixed2.jpg";
+//            String fileName = "src/main/resources/images/mixed2.jpg";
+//
+//            // Reads the image file into memory
+//            Path path = Paths.get(fileName);
+//            byte[] data = Files.readAllBytes(file.toPath());
 
-            // Reads the image file into memory
-            Path path = Paths.get(fileName);
-            byte[] data = Files.readAllBytes(path);
-            ByteString imgBytes = ByteString.copyFrom(data);
+//            byte[] data = Files.readAllBytes(path);
+            ByteString imgBytes = ByteString.copyFrom(fileBytes);
 
             // Builds the image annotation request
             List<AnnotateImageRequest> requests = new ArrayList<>();
@@ -48,7 +49,6 @@ public class DetectImage {
             for (AnnotateImageResponse res : responses) {
                 if (res.hasError()) {
                     System.out.format("Error: %s%n", res.getError().getMessage());
-                    return;
                 }
 
                 for (EntityAnnotation annotation : res.getLabelAnnotationsList()) {
@@ -59,6 +59,12 @@ public class DetectImage {
                 }
 
             }
+
+
+            return imageKeywords;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+
     }
 }
